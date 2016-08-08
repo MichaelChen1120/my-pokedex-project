@@ -6,4 +6,8 @@ class ApplicationController < Sinatra::Base
     enable :sessions
     set :session_secret, "pokesecret"
   end
+
+  get '/' do
+    'Hello World'
+  end
 end
