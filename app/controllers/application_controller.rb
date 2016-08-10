@@ -7,4 +7,8 @@ class ApplicationController < Sinatra::Base
     set :session_secret, "pokesecret"
   end
 
+  get '/' do
+    erb :index
+  end
+
 end
