@@ -6,11 +6,11 @@ class SessionsController < ApplicationController
 
   post '/sessions' do
     session[:username] = params[:username]
-    redirect '/user'
+    redirect '/pokemon'
   end
 
   get '/logout' do
-    session.clear
+    logout!
     redirect '/login'
   end
 end
