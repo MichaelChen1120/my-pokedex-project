@@ -5,7 +5,7 @@ class SessionsController < ApplicationController
   end
 
   post '/sessions' do
-    session[:username] = params[:username]
+    login(params[:username], params[:password])
     redirect '/pokemon'
   end
 
