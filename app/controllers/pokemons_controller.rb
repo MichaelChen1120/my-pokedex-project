@@ -27,6 +27,15 @@ class PokemonsController < ApplicationController
     end
   end
 
+  get '/pokemon/:id' do
+    if !logged_in?
+      redirect '/login'
+    else
+      @pokemons=Pokemon.find_by_id(params[:id])
+      erb :'/pokemons/show'
+    end
+  end
+
   get '/pokemon/:id/edit' do
     if !logged_in?
       redirect '/login'

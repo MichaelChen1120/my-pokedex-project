@@ -1,9 +1,9 @@
 <h3>Add a Pokemon</h3>
 
 <form action="/pokemon" method="post">
-  <select name="Pokemon">
+  <select name="name">
     <% Pokemon.scrape_pokemon.each do |pokemon| %>
-       <option value="<%= pokemon %>"> <%= pokemon %> </option>
+       <option value="<%= pokemon %>" id="name"> <%= pokemon %> </option>
     <% end %>
   </select>
   <p>

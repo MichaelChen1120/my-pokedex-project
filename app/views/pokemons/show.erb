@@ -1,8 +1,10 @@
 <h1>My Pokedex</h1>
 <br></br>
-
+<h3><%= @pokemons.name %></h3>
+<p>Nickname:<%= @pokemons.nickname %></p>
+<p>Weight:<%= @pokemons.weight %></p>
+<p>Height:<%= @pokemons.height %></p>
+<p>CP:<%= @pokemons.cp %></p>
 <br></br>
-<h3><a href="/pokemon/new">Add a new Pokemon</a></h3>
-<br></br>
-<p>Edit a Pokemon</p>
+<p>Edit <%= @pokemons.name %></p>
 <a href="/logout">Logout</a>

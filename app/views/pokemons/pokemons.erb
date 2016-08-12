@@ -2,8 +2,8 @@
 <h3>My Pokedex</h3>
 <br></br>
 <p>My Pokemon</p>
-<% @user.pokemons.each do |pokemon| %>
-  <p><%= pokemon.name %></p>
+<% @user.pokemons.each do |pokemons| %>
+  <p><a href="/pokemon/<%=pokemons.id%>"><%= pokemons.name %></p>
 <% end %>
 <br></br>
 <h3><a href="/pokemon/new">Add a new Pokemon</a></h3>
