@@ -1,1 +1,23 @@
 <h3>Add a Pokemon</h3>
+
+<form action="/pokemon" method="post">
+  <select name="Pokemon">
+    <% Pokemon.scrape_pokemon.each do |pokemon| %>
+       <option value="<%= pokemon %>"> <%= pokemon %> </option>
+    <% end %>
+  </select>
+  <p>
+    <label for="nickname">Nickname:</label>
+    <input type="text" name="nickname" id="nickname">
+    <br></br>
+    <label for="weight">Weight:</label>
+    <input type="float" name="weight" id="weight">
+    <br></br>
+    <label for="height">Height:</label>
+    <input type="float" name="height" id="height">
+    <br></br>
+    <label for="cp">CP:</label>
+    <input type="text" name="cp" id="cp">
+  </p>
+  <input type="submit" value="submit">
+</form>

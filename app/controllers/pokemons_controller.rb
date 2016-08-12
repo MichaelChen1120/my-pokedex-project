@@ -4,7 +4,8 @@ class PokemonsController < ApplicationController
     if !logged_in?
       redirect '/login'
     else
-      erb :'/pokemons/show'
+      @user=current_user
+      erb :'/pokemons/pokemons'
     end
   end
 
@@ -13,6 +14,16 @@ class PokemonsController < ApplicationController
       redirect '/login'
     else
       erb :'/pokemons/new'
+    end
+  end
+
+  post '/pokemon' do
+    if !logged_in?
+      redirect '/login'
+    else
+      @pokemons=Pokemon.new(name: params[:name], nickname: params[:nickname], weight: params[:weight], height: params[:height], cp: params[:cp], user_id: current_user.id)
+      @pokemons.save
+      redirect '/pokemon'
     end
   end
 

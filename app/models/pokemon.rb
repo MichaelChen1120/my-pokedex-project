@@ -13,7 +13,6 @@ class Pokemon <ActiveRecord::Base
     pokemon.reject! {|p| p.include?("Rainer")}
     pokemon.reject! {|p| p.include?("Sparky")}
     pokemon.reject! {|p| p.include?("Pyro")}
-    end
   end
 
 end
