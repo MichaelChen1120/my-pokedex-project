@@ -1,0 +1,13 @@
+<h3>Edit <%= @pokemons.name %></h3>
+
+<form action="/pokemon/<%= @pokemons.id %>" method="post">
+  <input id="hidden" type="hidden" name="_method" value="patch">
+  <p>Nickname<input type="text" name="nickname" value="<%= @pokemons.nickname %>"></p>
+  <p>Weight<input type="float" name="weight" value="<%= @pokemons.weight %>"></p>
+  <p>Height<input type="float" name="height" value="<%= @pokemons.height %>"></p>
+  <p>CP<input type="integer" name="cp" value="<%= @pokemons.cp %>"></p>
+  <input type="submit" value="submit">
+</form>
+<p><a href="/pokemon/<%= @pokemons.id %>/delete">Delete <%= @pokemons.name %></a></p>
+<br></br>
+<p><a href="/pokemon">My Pokemon</a></p>
