@@ -45,11 +45,11 @@ class PokemonsController < ApplicationController
     end
   end
 
-  patch '/pokemon/:id' do
+  post '/pokemon/:id' do
     @pokemons = Pokemon.find_by_id(params[:id])
     @pokemons.nickname = params[:nickname]
     @pokemons.weight = params[:weight]
-    @pokemons.height  =params[:height]
+    @pokemons.height = params[:height]
     @pokemons.cp = params[:cp]
     @pokemons.save
     redirect "/pokemon/#{@pokemons.id}"
