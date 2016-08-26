@@ -6,9 +6,11 @@
 
 <p>My Pokemon</p>
 
-  <% @user.pokemons.each do |pokemons| %>
-    <p><a href="/pokemon/<%=pokemons.id%>"><%= pokemons.name %></a></p>
-  <% end %>
+  <ul>
+    <% @user.pokemons.each do |pokemon| %>
+      <li><a href="/pokemon/<%=pokemon.id%>"><%= pokemon.name %> aka <%= pokemon.nickname %></a></li>
+    <% end %>
+  </ul>
 
 <br></br>
 

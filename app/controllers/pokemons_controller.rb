@@ -3,7 +3,7 @@ class PokemonsController < ApplicationController
   get '/pokemon' do
     redirect_if_not_logged_in
     @user=current_user
-    erb :'/pokemons/pokemons'
+    erb :'/users/show'
   end
 
   get '/pokemon/new' do
@@ -13,19 +13,19 @@ class PokemonsController < ApplicationController
 
   post '/pokemon' do
     redirect_if_not_logged_in
-    @pokemons=Pokemon.create(name: params[:name], nickname: params[:nickname], weight: params[:weight], height: params[:height], cp: params[:cp], user_id: current_user.id)
+    @pokemon=Pokemon.create(name: params[:name], nickname: params[:nickname], weight: params[:weight], height: params[:height], cp: params[:cp], user_id: current_user.id)
     redirect '/pokemon'
   end
 
   get '/pokemon/:id' do
     redirect_if_not_logged_in
-    @pokemons=Pokemon.find(params[:id])
+    @pokemon=Pokemon.find(params[:id])
     erb :'/pokemons/show'
   end
 
   get '/pokemon/:id/edit' do
     redirect_if_not_logged_in
-    @pokemons=Pokemon.find(params[:id])
+    @pokemon=Pokemon.find(params[:id])
     erb :'/pokemons/edit'
   end
 
@@ -37,8 +37,8 @@ class PokemonsController < ApplicationController
 
   get '/pokemon/:id/delete' do
     redirect_if_not_logged_in
-    @pokemons=Pokemon.find(params[:id])
-    @pokemons.delete
+    @pokemon=Pokemon.find(params[:id])
+    @pokemon.delete
     redirect '/pokemon'
   end
 
