@@ -9,8 +9,8 @@ class UsersController < ApplicationController
   end
 
   post '/users' do
-    if params[:username] == '' || params[:password] == ''
-      redirect '/signup'
+    if params[:username].empty? || params[:password].empty?
+      redirect '/signup?error=fill in empty fields'
     else
       @user=User.create(username: params[:username], password: params[:password])
       session[:user_id]= @user.id

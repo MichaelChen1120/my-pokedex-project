@@ -1,10 +1,10 @@
 class SessionsController < ApplicationController
 
   get '/login' do
-    if !session[:user_id]
-      erb :login
-    else
+    if logged_in?
       redirect '/pokemon'
+    else
+      erb :login
     end
   end
 
