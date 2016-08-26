@@ -15,10 +15,15 @@ ActiveRecord::Schema.define(version: 20160810213345) do
   create_table "pokemons", force: :cascade do |t|
     t.string  "name"
     t.string  "nickname"
+    t.string  "p_type"
     t.float   "weight"
     t.float   "height"
     t.integer "cp"
     t.integer "user_id"
+    t.string  "attack_move"
+    t.integer "attack_move_damage"
+    t.string  "special_move"
+    t.integer "special_move_damage"
   end
 
   create_table "users", force: :cascade do |t|

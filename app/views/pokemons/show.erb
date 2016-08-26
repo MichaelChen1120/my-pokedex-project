@@ -1,10 +1,13 @@
 <h1>My Pokedex</h1>
 <br></br>
 <h3><%= @pokemon.name %></h3>
-<p>Nickname:<%= @pokemon.nickname %></p>
-<p>Weight:<%= @pokemon.weight %></p>
-<p>Height:<%= @pokemon.height %></p>
-<p>CP:<%= @pokemon.cp %></p>
+<p>Nickname: <%= @pokemon.nickname %></p>
+<p>Type: <%= @pokemon.p_type %></p>
+<p>Weight: <%= @pokemon.weight %></p>
+<p>Height: <%= @pokemon.height %></p>
+<p>CP: <%= @pokemon.cp %></p>
+<p>Attack move: <%= @pokemon.attack_move %> - <%= @pokemon.attack_move_damage %> damage<p>
+<p>Special move: <%= @pokemon.special_move %> - <%= @pokemon.special_move_damage %> damage</p>
 <p><a href="/pokemon/<%= @pokemon.id %>/edit">Edit <%= @pokemon.name %></a></p>
 <br></br>
 <p><a href="/pokemon">My Pokemon</a></p>
