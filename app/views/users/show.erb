@@ -1,8 +1,6 @@
-<h2>Welcome <%= @user.username %></h2>
+<h2>My Pokedex</h2>
 
-<h3>My Pokedex</h3>
-
-<br></br>
+<h3>Welcome <%= @user.username %></h3>
 
 <p>My Pokemon</p>
 
@@ -11,8 +9,6 @@
       <li><a href="/pokemon/<%=pokemon.id%>"><%= pokemon.name %> aka <%= pokemon.nickname %> - <%= pokemon.cp %> CP</a></li>
     <% end %>
   </ul>
-
-<br></br>
 
 <h3><a href="/pokemon/new">Add a new Pokemon</a></h3>
 
