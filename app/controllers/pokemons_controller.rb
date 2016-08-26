@@ -1,52 +1,36 @@
 class PokemonsController < ApplicationController
 
   get '/pokemon' do
-    if !logged_in?
-      redirect '/login'
-    else
-      @user=current_user
-      erb :'/pokemons/pokemons'
-    end
+    redirect_if_not_logged_in
+    @user=current_user
+    erb :'/pokemons/pokemons'
   end
 
   get '/pokemon/new' do
-    if !logged_in?
-      redirect '/login'
-    else
-      erb :'/pokemons/new'
-    end
+    redirect_if_not_logged_in
+    erb :'/pokemons/new'
   end
 
   post '/pokemon' do
-    if !logged_in?
-      redirect '/login'
-    else
-      @pokemons=Pokemon.new(name: params[:name], nickname: params[:nickname], weight: params[:weight], height: params[:height], cp: params[:cp], user_id: current_user.id)
-      @pokemons.save
-      redirect '/pokemon'
-    end
+    redirect_if_not_logged_in
+    @pokemons=Pokemon.create(name: params[:name], nickname: params[:nickname], weight: params[:weight], height: params[:height], cp: params[:cp], user_id: current_user.id)
+    redirect '/pokemon'
   end
 
   get '/pokemon/:id' do
-    if !logged_in?
-      redirect '/login'
-    else
-      @pokemons=Pokemon.find_by_id(params[:id])
-      erb :'/pokemons/show'
-    end
+    redirect_if_not_logged_in
+    @pokemons=Pokemon.find(params[:id])
+    erb :'/pokemons/show'
   end
 
   get '/pokemon/:id/edit' do
-    if !logged_in?
-      redirect '/login'
-    else
-      @pokemons=Pokemon.find_by_id(params[:id])
-      erb :'/pokemons/edit'
-    end
+    redirect_if_not_logged_in
+    @pokemons=Pokemon.find(params[:id])
+    erb :'/pokemons/edit'
   end
 
   post '/pokemon/:id' do
-    @pokemons = Pokemon.find_by_id(params[:id])
+    @pokemons = Pokemon.find(params[:id])
     @pokemons.nickname = params[:nickname]
     @pokemons.weight = params[:weight]
     @pokemons.height = params[:height]
@@ -56,16 +40,13 @@ class PokemonsController < ApplicationController
   end
 
   get '/pokemon/:id/delete' do
-    if !logged_in?
-      redirect '/login'
-    else
-      @user=current_user
-      @pokemons=Pokemon.find_by_id(params[:id])
-      if @pokemons.user_id == @user.id
-        @pokemons.delete
-      end
-      redirect '/pokemon'
+    redirect_if_not_logged_in
+    @user=current_user
+    @pokemons=Pokemon.find(params[:id])
+    if @pokemons.user_id == @user.id
+      @pokemons.delete
     end
+    redirect '/pokemon'
   end
 
 end

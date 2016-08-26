@@ -1,17 +1,20 @@
 class UsersController < ApplicationController
 
   get '/signup' do
-    erb :'users/new'
+    if !current_user
+      erb :'users/new'
+    else
+      redirect '/pokemon'
+    end
   end
 
   post '/users' do
-    @user=User.new
-    @user.username= params[:username]
-    @user.password =params[:password]
-    if @user.save
-      redirect '/login'
-    else
+    if params[:username] == '' || params[:password] == ''
       redirect '/signup'
+    else
+      @user=User.create(username: params[:username], password: params[:password])
+      session[:user_id]= @user.id
+      redirect '/pokemon'
     end
   end
 

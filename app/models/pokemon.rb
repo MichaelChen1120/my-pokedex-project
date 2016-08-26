@@ -9,10 +9,7 @@ class Pokemon <ActiveRecord::Base
       pokemon.text
     end
     pokemon.reject! {|p| p.empty?}
-    pokemon.reject! {|p| p.include?("Evolutions")}
-    pokemon.reject! {|p| p.include?("Rainer")}
-    pokemon.reject! {|p| p.include?("Sparky")}
-    pokemon.reject! {|p| p.include?("Pyro")}
+    pokemon.reject! {|p| p =~ /Evolutions|Rainer|Sparky|Pyro/i}
   end
 
 end
