@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
 
   get '/signup' do
-    if !current_user
+    if !logged_in?
       erb :'users/new'
     else
       redirect '/pokemon'

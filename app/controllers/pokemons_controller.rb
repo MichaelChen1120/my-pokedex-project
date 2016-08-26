@@ -30,22 +30,15 @@ class PokemonsController < ApplicationController
   end
 
   post '/pokemon/:id' do
-    @pokemons = Pokemon.find(params[:id])
-    @pokemons.nickname = params[:nickname]
-    @pokemons.weight = params[:weight]
-    @pokemons.height = params[:height]
-    @pokemons.cp = params[:cp]
-    @pokemons.save
-    redirect "/pokemon/#{@pokemons.id}"
+    @pokemon = Pokemon.find(params[:id])
+    @pokemon.update(nickname: params[:nickname], weight: params[:weight], height: params[:height], cp: params[:cp])
+    redirect "/pokemon/#{@pokemon.id}"
   end
 
   get '/pokemon/:id/delete' do
     redirect_if_not_logged_in
-    @user=current_user
     @pokemons=Pokemon.find(params[:id])
-    if @pokemons.user_id == @user.id
-      @pokemons.delete
-    end
+    @pokemons.delete
     redirect '/pokemon'
   end
 
