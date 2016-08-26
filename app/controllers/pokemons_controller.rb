@@ -15,7 +15,7 @@ class PokemonsController < ApplicationController
     redirect_if_not_logged_in
     @pokemon=Pokemon.create(name: params[:name], nickname: params[:nickname], p_type: params[:p_type], weight: params[:weight], height: params[:height], cp: params[:cp],
      attack_move: params[:attack_move], attack_move_damage: params[:attack_move_damage], special_move: params[:special_move], special_move_damage: params[:special_move_damage], user_id: current_user.id)
-    redirect '/pokemon'
+    erb :'/pokemons/show'
   end
 
   get '/pokemon/:id' do

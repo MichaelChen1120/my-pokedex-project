@@ -8,7 +8,7 @@
 
   <ul>
     <% @user.pokemons.each do |pokemon| %>
-      <li><a href="/pokemon/<%=pokemon.id%>"><%= pokemon.name %> aka <%= pokemon.nickname %></a></li>
+      <li><a href="/pokemon/<%=pokemon.id%>"><%= pokemon.name %> aka <%= pokemon.nickname %> - <%= pokemon.cp %> CP</a></li>
     <% end %>
   </ul>
 
