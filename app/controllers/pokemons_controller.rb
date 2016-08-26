@@ -13,7 +13,7 @@ class PokemonsController < ApplicationController
 
   post '/pokemon' do
     redirect_if_not_logged_in
-    if Pokemon.not_blank_params?(params)
+    if Pokemon.not_missing_params?(params)
       @pokemon=Pokemon.create(name: params[:name], nickname: params[:nickname], p_type: params[:p_type], weight: params[:weight], height: params[:height], cp: params[:cp],
       attack_move: params[:attack_move], attack_move_damage: params[:attack_move_damage], special_move: params[:special_move], special_move_damage: params[:special_move_damage], user_id: current_user.id)
       erb :'/pokemons/show'
@@ -38,7 +38,7 @@ class PokemonsController < ApplicationController
 
   post '/pokemon/:id' do
     @pokemon = Pokemon.find(params[:id])
-    if Pokemon.not_blank_params?(params)
+    if Pokemon.not_missing_params?(params)
       @pokemon.update(nickname: params[:nickname], p_type: params[:p_type], weight: params[:weight], height: params[:height], cp: params[:cp],
       attack_move: params[:attack_move], attack_move_damage: params[:attack_move_damage], special_move: params[:special_move], special_move_damage: params[:special_move_damage])
       redirect "/pokemon/#{@pokemon.id}"

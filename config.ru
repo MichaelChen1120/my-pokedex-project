@@ -7,7 +7,6 @@ if ActiveRecord::Migrator.needs_migration?
 end
 
 use PokemonsController
-use SessionsController
 use UsersController
 use Rack::MethodOverride
 run ApplicationController
