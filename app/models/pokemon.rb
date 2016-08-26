@@ -13,8 +13,8 @@ class Pokemon <ActiveRecord::Base
   end
 
   def self.not_missing_params?(params)
-    params[:cp] != nil && params[:attack_move] != nil && params[:attack_move_damage] != nil && params[:special_move] != nil && params[:special_move_damage_move] != nil &&
-    params[:p_type] != nil
+    params[:cp] != "" && params[:attack_move] != "" && params[:attack_move_damage] != "" && params[:special_move] != "" && params[:special_move_damage_move] != "" &&
+    params[:p_type] != ""
   end
 
 end
