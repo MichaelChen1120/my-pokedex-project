@@ -10,6 +10,7 @@ class Pokemon <ActiveRecord::Base
     end
     pokemon.reject! {|p| p.empty?}
     pokemon.reject! {|p| p =~ /Evolutions|Rainer|Sparky|Pyro/i}
+    pokemon.sort
   end
 
   def self.not_missing_params?(params)
