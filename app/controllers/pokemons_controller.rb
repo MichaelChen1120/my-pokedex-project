@@ -24,7 +24,7 @@ class PokemonsController < ApplicationController
 
   get '/pokemon/:id' do
     redirect_if_not_logged_in
-    @pokemon=Pokemon.find(params[:id])
+    @pokemon = Pokemon.find(params[:id])
     redirect_if_not_valid_owner
     erb :'/pokemons/show'
   end

@@ -22,7 +22,7 @@ class ApplicationController < Sinatra::Base
     end
 
     def redirect_if_not_valid_owner
-      redirect '/pokemon?error=that-is-not-your-pokemon' if @pokemon.user_id != current_user.id
+      redirect '/pokemon?error=that-is-not-your-pokemon' if @pokemon != current_user.pokemons.find_by_id(params[:id])
     end
 
     def redirect_if_not_logged_in
