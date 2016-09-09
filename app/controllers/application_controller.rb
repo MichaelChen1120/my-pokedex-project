@@ -21,12 +21,16 @@ class ApplicationController < Sinatra::Base
       User.find(session[:user_id])
     end
 
+    def redirect_if_pokemon_not_found
+      redirect '/pokemon?error=ERROR: That Pokemon does not exist' if @pokemon.nil?
+    end
+
     def redirect_if_not_valid_owner
-      redirect '/pokemon?error=that-is-not-your-pokemon' if @pokemon != current_user.pokemons.find_by_id(params[:id])
+      redirect '/pokemon?error=ERROR: that is not your Pokemon' if @pokemon != current_user.pokemons.find_by_id(params[:id])
     end
 
     def redirect_if_not_logged_in
-      redirect '/login?error=you-must-log-in' if !logged_in?
+      redirect '/login?error=ERROR: you must log in' if !logged_in?
     end
 
     def login(username,password)

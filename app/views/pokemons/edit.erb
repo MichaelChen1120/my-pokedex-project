@@ -10,7 +10,9 @@
   <p>Special Move: <input type="string" name="special_move" value="<%= @pokemon.special_move %>" required> Damage: <input type="integer" name="special_move_damage" value="<%= @pokemon.special_move_damage %>" required></p>
   <input type="submit" value="Update">
 </form>
-<%= @error %>
+
 <p><a href="/pokemon/<%= @pokemon.id %>/delete">Delete <%= @pokemon.name %></a></p>
 <br></br>
 <p><a href="/pokemon">My Pokemon</a></p>
+
+<%= @error %>
