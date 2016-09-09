@@ -30,7 +30,7 @@ class ApplicationController < Sinatra::Base
     end
 
     def login(username,password)
-      user=User.find_by(:username => username)
+      user = User.find_by(:username => username)
       if user && user.authenticate(password)
         session[:user_id] = user.id
       else

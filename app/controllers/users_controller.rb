@@ -9,9 +9,13 @@ class UsersController < ApplicationController
   end
 
   post '/users' do
-    @user=User.create(username: params[:username], password: params[:password])
-    session[:user_id]= @user.id
-    redirect '/pokemon'
+    @user=User.new(username: params[:username], password: params[:password])
+    if @user.save
+      session[:user_id] = @user.id
+      redirect '/pokemon'
+    else
+      erb :index
+    end
   end
 
   get '/login' do

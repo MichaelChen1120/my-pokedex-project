@@ -8,6 +8,7 @@ class PokemonsController < ApplicationController
 
   get '/pokemon/new' do
     redirect_if_not_logged_in
+    @error = params[:error]
     erb :'/pokemons/new'
   end
 
@@ -18,7 +19,7 @@ class PokemonsController < ApplicationController
       attack_move: params[:attack_move], attack_move_damage: params[:attack_move_damage], special_move: params[:special_move], special_move_damage: params[:special_move_damage], user_id: current_user.id)
       erb :'/pokemons/show'
     else
-      redirect '/pokemon/new?error=fill-in-missing-fields'
+      redirect '/pokemon/new?error=ERROR: Please fill in missing fields'
     end
   end
 
@@ -33,6 +34,7 @@ class PokemonsController < ApplicationController
     redirect_if_not_logged_in
     @pokemon=Pokemon.find(params[:id])
     redirect_if_not_valid_owner
+    @error = params[:error]
     erb :'/pokemons/edit'
   end
 
@@ -43,7 +45,7 @@ class PokemonsController < ApplicationController
       attack_move: params[:attack_move], attack_move_damage: params[:attack_move_damage], special_move: params[:special_move], special_move_damage: params[:special_move_damage])
       redirect "/pokemon/#{@pokemon.id}"
     else
-      redirect "/pokemon/#{@pokemon.id}/edit?error=fill-in-missing-fields"
+      redirect "/pokemon/#{@pokemon.id}/edit?ERROR: Please fill in missing fields"
     end
   end
 
